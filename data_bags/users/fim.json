@@ -1,0 +1,5 @@
+{
+  'id': 'fim',
+  'groups': ['sysadmin', 'dba', 'devops'],
+  'ssh_keys': 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDN19hqzuQb5X5295yIlvj6NPnq75FIPkv4RaWVv0qcO9jnGAlU11enpDbpFm4cutA4xjrTQYmypT21S86HGkFhKcXHSqYDPkNslWpp4ah7w9YMbvqjSTJ8xn1DTY8FEKUfGaJvf9fm30EBzJLVhiav7f+jUTiUDRdstyHYb8rNDuX7CRCPqImTCa1T+L+WlfBumEfXzdMwTu1D5+FZsqxr3V5qwWM/prufM35rEsitqEFbKhm2Ns5iDh/OWY8asfZXt3ZEc/CQxsuF8mrmgXBGzbMq07BnMXU50SD7y6MeTxMso0HnYoYgoK73bxzMMpUWe04OIer+SaXm9ABFrOCn subbota@gmail.com'
+}
