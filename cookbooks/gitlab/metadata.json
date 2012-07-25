@@ -1,0 +1,50 @@
+{
+  "name": "gitlab",
+  "description": "Installs/Configures gitlab",
+  "long_description": "Description\n===========\n\nThis cookbook will deploy gitlab; a free project and repository management\napplication.\n\nCode hosted on github [here](https://github.com/gitlabhq/gitlabhq/tree/stable).\n\nThis cookbook was developed on RHEL/CentOS 6.  Other platforms may need re-worked,\nplease open an issue or send a pull request to either, atomic-penguin or jackl0phty, on github.\n\nRequirements\n============\n\n* Hard disk space\n  - About 200 Mb, plus enough space for repositories on /var\n\n* Ruby 1.9.1 packages\n  - Packages used for Debian / Ubuntu only\n\n* Nginx package\n  - All platforms need an nginx package to configure Nginx and Unicorn.\n\nCookbooks + Acknowledgements\n----------------------------\n\nThe dependencies in this cookbook add up to over 1,500 lines of code.\nThis would not have been possible without the great community work of so many others.\nMuch kudos to everyone who added indirectly to the epicness of this cookbook.\n\n* [ruby\\_build](http://fnichol.github.com/chef-ruby_build/)\n  - Thanks to Fletcher Nichol for his awesome ruby\\_build cookbook.\n    This ruby\\_build LWRP is used to build Ruby 1.9.2 for gitlab,\n    since Redhat shipped rubies are not compatible with the application.\n\n* gitolite\n  - Big thanks to Ruan David's [gitolite](http://ckbk.it/gitolite) as\n    it certainly helped with the development of this cookbook.\n    Unfortunately we had to implement our cookbook in such a way that\n    directly conflicts with the original cookbook.\n\n* [chef\\_gem](http://ckbk.it/chef_gem)\n  - Thanks to Chris Roberts for this little gem helper.  This cookbook\n    provides a compatible gem resource for Omnibus on Chef versions less\n    than 0.10.8\n\n* [redisio](http://ckbk.it/redisio)\n  - Thanks to Brian Bianco for this Redis cookbook, because I don't know\n    anything about Redis.  Thanks to this cookbook I still don't know\n    anything about Redis, and that is the best kind of cookbook.  One\n    that just works out of the box.\n\n* Opscode, Inc cookbooks\n  - [git](http://ckbk.it/git)\n  - [sqlite](http://ckbk.it/sqlite)\n  - [build-essential](http://ckbk.it/build-essential)\n  - [python::pip](http://ckbk.it/python)\n  - [sudo](http://ckbk.it/sudo)\n  - [openssh](http://ckbk.it/openssh)\n  - [perl](http://ckbk.it/perl)\n  - [xml](http://ckbk.it/xml)\n  - [zlib](http://ckbk.it/zlib)\n\n\nNotes about conflicts\n---------------------\n\n* [gitolite](http://ckbk.it/gitolite) cookbook\n  - The gitolite recipe within our cookbook was based on David Ruan's cookbook.\n    We couldn't integrate gitolite and gitlab without significant rework on David's\n    original cookbook.  Our gitolite recipe will only configure gitolite for use with gitlab.\n    Our gitlab::gitolite recipe will not set up a standalone gitolite installation as David's\n    cookbook does.\n\n* [nginx](http://ckbk.it/nginx) cookbook\n  - Our default recipe templates out the /etc/nginx/conf.d/default.conf.  This will directly\n    conflict with another cookbook, such as nginx, trying to manage this file.\n\nAttributes\n==========\n\n* gitlab['gitolite\\_url']\n  - Github gitolite address\n  - Default git://github.com/sitaramc/gitolite.git\n\n* gitlab['git\\_user'] & gitlab['git\\_group']\n  - Git service account for gitolite\n  - Default git\n\n* gitlab['git\\_home']\n  - Top-level home for gitolite and repositories\n  - Default /var/git\n\n* gitlab['gitolite\\_home']\n  - Application home for gitolite\n  - Default /var/git/gitolite\n\n* gitlab['gitolite\\_umask']\n  - Umask setting for gitolite.rc\n  - Defaults to 0007\n\n* gitlab['user'] & gitlab['group']\n  - Gitlab service user and group for Unicorn Rails app\n  - Default gitlab\n\n* gitlab['home']\n  - Gitlab top-level home for service account\n  - default /var/gitlab\n\n* gitlab['app\\_home']\n  - Gitlab application home\n  - Default /var/gitlab/gitlab\n\n* gitlab['gitlab\\_url']\n  - Github gitlab address\n  - Default git://github.com/gitlabhq/gitlabhq.git\n\n* gitlab['gitlab\\_branch']\n  - Gitlab git branch\n  - Default master\n\n* gitlab['packages']\n  - Platform specific OS packages\n\n* gitlab['trust\\_local\\_sshkeys']\n  - ssh\\_config key for gitlab to trust localhost keys automatically\n  - Defaults to yes\n\n* gitlab['install\\_ruby']\n  - Attribute to determine whether vendor packages are installed,\n    or Rubies are built\n  - Redhat family defaults 1.9.2; Debian family defaults to package.\n\nUsage\n=====\n\nOptionally override application paths using gitlab['git\\_home'] and gitlab['home'].\n\nAdd recipe gitlab::default to run\\_list.  Go grab a lunch, or two, if Ruby has to build.\n\nThe default admin credentials for the gitlab application are as follows:\n\n    User: admin@local.host\n    Password: 5iveL!fe\n\nOf course you should change these first thing, once deployed.\n\nLicense and Author\n==================\n\nAuthor: Gerald L. Hevener Jr., M.S.\nCopyright: 2012\n\nAuthor: Eric G. Wolfe \nCopyright: 2012\n\nGitlolite Author: David Ruan\nCopyright: RailsAnt, Inc., 2010\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "maintainer": "Gerald L. Hevener Jr., M.S.",
+  "maintainer_email": "hevenerg@marshall.edu",
+  "license": "Apache 2.0",
+  "platforms": {
+    "redhat": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "scientific": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0"
+  },
+  "dependencies": {
+    "ruby_build": ">= 0.0.0",
+    "chef_gem": ">= 0.0.0",
+    "git": ">= 0.0.0",
+    "sqlite": ">= 0.0.0",
+    "redisio": ">= 0.0.0",
+    "build-essential": ">= 0.0.0",
+    "python": ">= 0.0.0",
+    "readline": ">= 0.0.0",
+    "sudo": ">= 0.0.0",
+    "openssh": ">= 0.0.0",
+    "perl": ">= 0.0.0",
+    "xml": ">= 0.0.0",
+    "zlib": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+    "gitolite": ">= 0.0.0",
+    "nginx": ">= 0.0.0"
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.2.1"
+}
