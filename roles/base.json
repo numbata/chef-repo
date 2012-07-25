@@ -3,8 +3,32 @@
   "chef_type": "role",
   "json_class" : "Chef::Role",
   "description" : "Base role",
-  "run_list": ["recipe[apt]", "recipe[users::sysadmins]", "recipe[sudo]", "recipe[nginx::source]", "recipe[percona-install"],
+  "run_list": [
+    "recipe[apt]",
+    "recipe[users::sysadmins]",
+    "recipe[sudo]",
+    "recipe[nginx::source]",
+    "recipe[php]",
+    "recipe[percona-install::server]",
+    "recipe[percona-install::client]"
+    ],
   "default_attributes": {
+    "php": {
+      "install_method": "source",
+      "configure_options": [
+        "--with-gd",
+        "--enable-fpm",
+        "--enable-bcmath",
+        "--enable-mbstring",
+        "--with-zlib",
+        "--enable-pdo",
+        "--with-pdo-mysql=mysqlnd",
+        "--with-mysqli=mysqlnd",
+        "--with-jpeg-dir",
+        "--enable-phar",
+        "--enable-zend-multibyte"
+      ]
+    },
     "nginx": {
       "init_style": "init"
       },
