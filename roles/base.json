@@ -1,0 +1,19 @@
+{
+  "name" : "base",
+  "chef_type": "role",
+  "json_class" : "Chef::Role",
+  "description" : "Base role",
+  "run_list": ["recipe[apt]", "recipe[users::sysadmins]", "recipe[sudo]", "recipe[nginx::source]", "recipe[percona-install"],
+  "default_attributes": {
+    "nginx": {
+      "init_style": "init"
+      },
+    "authorization": {
+      "sudo": {
+        "groups": ["admin", "wheel", "sysadmin"],
+        "users" : ["fim", "ip"],
+        "passwordless": true
+        }
+      }
+    }
+}
