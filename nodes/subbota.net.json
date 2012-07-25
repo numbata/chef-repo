@@ -1,0 +1,8 @@
+{
+  "json_class": "Chef::Node",
+  "name": "subbota.net",
+  "chef_environment": "_default",
+  "run_list": [
+    "role[base]"
+  ]
+}

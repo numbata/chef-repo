@@ -1,4 +1,4 @@
 {
-  'id': 'ip',
-  'groups': ['sysadmin', 'dba', 'devops'],
+  "id": "ip",
+  "groups": ["sysadmin", "dba", "devops"]
 }
