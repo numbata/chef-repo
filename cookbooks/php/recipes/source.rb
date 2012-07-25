@@ -22,7 +22,7 @@ configure_options = node['php']['configure_options'].join(" ")
 
 include_recipe "build-essential"
 include_recipe "xml"
-include_recipe "percona::client" if configure_options =~ /mysql/
+include_recipe "percona-install::client" if configure_options =~ /mysql/
 
 pkgs = value_for_platform(
     ["centos","redhat","fedora"] =>
