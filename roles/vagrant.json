@@ -1,0 +1,21 @@
+{
+  "name" : "vagrant",
+  "chef_type": "role",
+  "json_class" : "Chef::Role",
+  "description" : "Vagrant role",
+  "run_list": [
+    "role[base]",
+    "recipe[rvm::system]",
+    "recipe[vagrant_boxes]"
+    ],
+  "default_attributes": {
+    "rvm": {
+      "group_users": ["fim", "ip"],
+      "rubies": ["1.9.2", "1.9.3"],
+      "global_gems": [
+        {"name": "bundler"},
+        {"name": "vagrant"}
+      ]
+    }
+ }
+}

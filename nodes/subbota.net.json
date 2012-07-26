@@ -3,6 +3,21 @@
   "name": "subbota.net",
   "chef_environment": "_default",
   "run_list": [
-    "role[base]"
-  ]
+    "role[base]",
+    "role[vagrant]"
+  ],
+  "attributes": {
+    "vagrant_boxes": {
+      "boxes": [
+        {
+          "name": "gitlab",
+          "forward_port": {"80": "4567"},
+          "run_list" : [
+            "role['base']",
+            "role['gitlab']"
+          ]
+        }
+      ]
+    }
+  }
 }
