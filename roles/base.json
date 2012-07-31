@@ -9,7 +9,6 @@
     "recipe[sudo]",
     "recipe[nginx::source]",
     "recipe[php]",
-    "recipe[php-defaults]",
     "recipe[percona-install::server]",
     "recipe[percona-install::client]"
     ],

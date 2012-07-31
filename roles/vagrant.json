@@ -6,6 +6,7 @@
   "run_list": [
     "role[base]",
     "recipe[rvm::system]",
+    "recipe[virtualbox]",
     "recipe[vagrant_boxes]"
     ],
   "default_attributes": {

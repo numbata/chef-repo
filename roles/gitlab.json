@@ -8,7 +8,7 @@
     "recipe[users::sysadmins]",
     "recipe[sudo]",
     "recipe[nginx::source]",
-    "recipe[gitlab]",
+    "recipe[gitlab]"
     ],
   "default_attributes": {
     "nginx": {

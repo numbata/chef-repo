@@ -1,0 +1,9 @@
+{
+  "json_class": "Chef::Node",
+  "name": "gitlab",
+  "chef_environment": "_default",
+  "run_list": [
+    "role[base]",
+    "role[gitlab]"
+  ]
+}
