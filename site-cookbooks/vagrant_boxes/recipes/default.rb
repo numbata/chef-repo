@@ -27,3 +27,9 @@ template "#{node['vagrant_boxes']['path']}/Vagrantfile" do
   })
 end
 
+
+execute "vagrant_up" do
+  user "root"
+  cwd node['vagrant_boxes']['path']
+  command "vagrant up"
+end
