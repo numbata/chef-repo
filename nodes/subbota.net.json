@@ -11,7 +11,11 @@
       "boxes": [
         {
           "name": "gitlab",
-          "forward_port": {"80": "4567"},
+          "forward_port": {
+            "80": "4567",
+            "22": "2222"
+          },
+          "public_ip" : "188.120.246.38",
           "run_list" : [
             "role['base']",
             "role['gitlab']"

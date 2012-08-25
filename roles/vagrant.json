@@ -5,18 +5,16 @@
   "description" : "Vagrant role",
   "run_list": [
     "role[base]",
-    "recipe[rvm::system]",
+    "recipe[rvm::install]",
     "recipe[virtualbox]",
     "recipe[vagrant_boxes]"
     ],
   "default_attributes": {
     "rvm": {
-      "group_users": ["fim", "ip"],
-      "rubies": ["1.9.2", "1.9.3"],
-      "global_gems": [
-        {"name": "bundler"},
-        {"name": "vagrant"}
-      ]
+      "ruby": {
+        "version": "1.9.3",
+        "default": "true"
+      }
     }
  }
 }

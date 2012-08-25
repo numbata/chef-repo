@@ -10,15 +10,15 @@
 
 # Web application specific settings
 web:
-  host: localhost
+  host: <%= node['gitlab']['web_host'] %>
   port: <%= node['gitlab']['port'] %>
   https: false
 
 # Email used for notification
 # about new issues, comments
 email:
-  from: gitlab@<%= node['fqdn'] %>
-  host: <%= node['fqdn'] %>
+  from: gitlab@<%= node['gitlab']['hostname'] %>
+  host: <%= node['gitlab']['email_host'] %>
 
   # Protocol used for links in email letters
   # Value can be http or https
@@ -39,7 +39,7 @@ app:
 git_host:
   admin_uri: <%= node['gitlab']['git_user'] %>@localhost:gitolite-admin
   base_path: <%= node['gitlab']['git_home'] %>/repositories
-  host: <%= node['fqdn'] %>
+  host: <%= node['gitlab']['hostname'] %>
   git_user: <%= node['gitlab']['git_user'] %>
   upload_pack: true
   receive_pack: true

@@ -7,13 +7,19 @@
     "recipe[apt]",
     "recipe[users::sysadmins]",
     "recipe[sudo]",
-    "recipe[nginx::source]",
+    "recipe[rvm::install]",
     "recipe[gitlab]"
     ],
   "default_attributes": {
     "nginx": {
       "init_style": "init"
       },
+    "rvm": {
+      "ruby": {
+        "version": "1.9.3",
+        "default": "true"
+      }
+    },
     "authorization": {
       "sudo": {
         "groups": ["admin", "wheel", "sysadmin"],
