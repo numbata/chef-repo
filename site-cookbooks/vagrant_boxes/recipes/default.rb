@@ -1,4 +1,11 @@
 vagrant_lucid_image = "vagrant_lucid.box"
+gem_package "bundle" do
+  action :install
+end
+
+gem_package "vagrant" do
+  action :install
+end
 
 directory "#{node['vagrant_boxes']['path']}" do
   owner "root"
@@ -13,10 +20,21 @@ remote_file "#{Chef::Config[:file_cache_path]}/#{vagrant_lucid_image}" do
   action :create_if_missing
 end
 
+need_iptables = false
+
 node['vagrant_boxes']['boxes'].each do |box|
   vagrant_boxes_box "#{box['name']}" do
     action :install
     provider "vagrant_boxes_box"
+  end
+  need_iptables = true if box.has_key?('public')
+end
+
+if need_iptables
+  iptables_rule "vagrant" do
+    variables ({
+      :boxes => node['vagrant_boxes']['boxes']
+    })
   end
 end
 
@@ -27,9 +45,16 @@ template "#{node['vagrant_boxes']['path']}/Vagrantfile" do
   })
 end
 
+execute "vagrant_reload" do
+  user "root"
+  cwd node['vagrant_boxes']['path']
+  command "vagrant reload"
+  only_if "vagrant status | grep -q running"
+end
 
 execute "vagrant_up" do
   user "root"
   cwd node['vagrant_boxes']['path']
   command "vagrant up"
+  not_if "vagrant status | grep -q running"
 end
