@@ -4,6 +4,6 @@ license          "Apache 2.0"
 description      "Setup vagrant boxes"
 version          "0.0.2"
 
-depends 'iptables', '~> 0.10.0'
+depends 'iptables'
 
 recipe "vagrant_boxes", "Setup vagrant boxes"

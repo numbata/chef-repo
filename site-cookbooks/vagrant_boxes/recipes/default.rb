@@ -27,10 +27,12 @@ node['vagrant_boxes']['boxes'].each do |box|
     action :install
     provider "vagrant_boxes_box"
   end
-  need_iptables = true if box.has_key?('public')
+  need_iptables = true if box.has_key?('public_ip')
 end
 
 if need_iptables
+  Chef::Log.info("Reconfigure iptables")
+  include_recipe 'iptables'
   iptables_rule "vagrant" do
     variables ({
       :boxes => node['vagrant_boxes']['boxes']

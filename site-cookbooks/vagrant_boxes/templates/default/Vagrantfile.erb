@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
       chef.validation_key_path = "<%= Chef::Config[:validation_key] %>"
       chef.client_key_path = "<%= Chef::Config[:client_key] %>"
     end
-    <% if box.has_key?('forward_port) -%>
+    <% if box.has_key?('forward_port') -%>
       <% box['forward_port'].each_pair do |src, dst| -%>
       box_config.vm.forward_port <%= src %>, <%= dst %>
       <% end %>
