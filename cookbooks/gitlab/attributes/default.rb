@@ -24,8 +24,8 @@ default['gitlab']['home'] = "/var/gitlab"
 default['gitlab']['app_home'] = "#{node['gitlab']['home']}/gitlab"
 
 # Set github URL for gitlab
-default['gitlab']['gitlab_url'] = "https://github.com/one-os/gitlabhq.git"
-default['gitlab']['gitlab_branch'] = "v2.6.0+patches"
+default['gitlab']['gitlab_url'] = "https://github.com/gitlabhq/gitlabhq.git"
+default['gitlab']['gitlab_branch'] = "stable"
 
 default['gitlab']['hostname'] = node.fqdn
 default['gitlab']['web_host'] = node.fqdn
