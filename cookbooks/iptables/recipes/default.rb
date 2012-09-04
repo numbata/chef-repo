@@ -17,20 +17,20 @@
 # limitations under the License.
 #
 
-package "iptables" 
+package "iptables"
+
+cookbook_file "/usr/sbin/rebuild-iptables" do
+    source "rebuild-iptables"
+    mode 0755
+end
 
 execute "rebuild-iptables" do
-  command "/usr/sbin/rebuild-iptables"
+  command "`which ruby` /usr/sbin/rebuild-iptables"
   action :nothing
 end
 
 directory "/etc/iptables.d" do
   action :create
-end
-
-cookbook_file "/usr/sbin/rebuild-iptables" do
-  source "rebuild-iptables"
-  mode 0755
 end
 
 case node[:platform]
