@@ -27,6 +27,13 @@ when "debian","ubuntu"
     command "apt-get update"
   end
 
-  package "percona-server-client-5.5"
-  package "libmysqlclient-dev"
+  package "percona-server-client-5.5" do
+    action :install
+    options "--force-yes"
+  end
+
+  package "libmysqlclient-dev" do
+    action :install
+    options "--force-yes"
+  end
 end
