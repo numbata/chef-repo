@@ -66,7 +66,7 @@ user node['nginx']['user'] do
 end
 
 node.run_state['nginx_force_recompile'] = false
-node.run_state['nginx_configure_flags'] = 
+node.run_state['nginx_configure_flags'] =
   node['nginx']['source']['default_configure_flags'] | node['nginx']['configure_flags']
 
 node['nginx']['source']['modules'].each do |ngx_module|
@@ -84,9 +84,10 @@ bash "compile_nginx_source" do
     make && make install
     rm -f #{node['nginx']['dir']}/nginx.conf
   EOH
-  
+
   not_if do
     nginx_force_recompile == false &&
+      node.automatic_attrs['nginx'] && node['nginx'] &&
       node.automatic_attrs['nginx']['version'] == node['nginx']['version'] &&
       node.automatic_attrs['nginx']['configure_arguments'].sort == configure_flags.sort
   end
@@ -132,7 +133,7 @@ when "bluepill"
   end
 else
   node.set['nginx']['daemon_disable'] = false
-  
+
   template "/etc/init.d/nginx" do
     source "nginx.init.erb"
     owner "root"
