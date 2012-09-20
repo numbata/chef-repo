@@ -19,6 +19,15 @@
 
 package "iptables"
 
+directory "/etc/iptables.d" do
+  action :create
+end
+
+directory "/etc/iptables" do
+  action :create
+end
+
+
 cookbook_file "/usr/sbin/rebuild-iptables" do
     source "rebuild-iptables"
     mode 0755
@@ -27,10 +36,6 @@ end
 execute "rebuild-iptables" do
   command "`which ruby` /usr/sbin/rebuild-iptables"
   action :nothing
-end
-
-directory "/etc/iptables.d" do
-  action :create
 end
 
 case node[:platform]
@@ -43,7 +48,6 @@ when "ubuntu", "debian"
     variables :iptables_save_file => iptables_save_file
   end
 end
-
 
 iptables_rule "all_established"
 iptables_rule "all_icmp"
