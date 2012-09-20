@@ -38,6 +38,11 @@ if need_iptables
       :boxes => node['vagrant_boxes']['boxes']
     })
   end
+  execute "iptables_forward" do
+    user "root"
+    command "echo '1' > /proc/sys/net/ipv4/ip_forward"
+    only_if "cat /proc/sys/net/ipv4/ip_forward | grep -q 0"
+  end
 end
 
 template "#{node['vagrant_boxes']['path']}/Vagrantfile" do
