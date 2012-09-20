@@ -5,7 +5,7 @@
   "description" : "Vagrant role",
   "run_list": [
     "role[base]",
-    "recipe[rvm::install]",
+    "recipe[rvm::ruby_193]",
     "recipe[virtualbox]",
     "recipe[vagrant_boxes]"
     ],

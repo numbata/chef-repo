@@ -7,7 +7,7 @@
     "recipe[apt]",
     "recipe[users::sysadmins]",
     "recipe[sudo]",
-    "recipe[rvm::install]",
+    "recipe[rvm::ruby_193]",
     "recipe[gitlab]"
     ],
   "default_attributes": {
