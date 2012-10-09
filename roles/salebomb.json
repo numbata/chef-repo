@@ -1,0 +1,27 @@
+{
+  "name" : "salebomb",
+  "chef_type": "role",
+  "json_class" : "Chef::Role",
+  "description" : "Salebomb role",
+  "run_list": [
+    "role[base]"
+    ],
+  "default_attributes": {
+    "nginx": {
+      "init_style": "init"
+      },
+    "rvm": {
+      "ruby": {
+        "version": "1.9.3",
+        "default": "true"
+      }
+    },
+    "authorization": {
+      "sudo": {
+        "groups": ["admin", "wheel", "sysadmin"],
+        "users" : ["fim", "ip" ,"brooklin"],
+        "passwordless": true
+        }
+      }
+    }
+}
