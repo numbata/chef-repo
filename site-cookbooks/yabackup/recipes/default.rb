@@ -2,9 +2,9 @@
 # Cookbook Name:: yabackup
 # Recipe:: default
 #
-package davfs2
+package "davfs2"
 
-directory "/mnt/backup/" do
+directory "/mnt/yabackup/" do
   owner "root"
   group "root"
   mode "0755"
@@ -16,11 +16,11 @@ yasecret = data_bag_item('secrets', 'yabackup')
 
 execute "check_yadisk_pass" do
   user "root"
-  command "echo 'https://webdav.yandex.ru/ #{yasecret.username} #{yasecret.password}' >> /etc/davfs2/secrets"
+  command "echo 'https://webdav.yandex.ru/ #{yasecret['username']} #{yasecret['password']}' >> /etc/davfs2/secrets"
   not_if "grep -q 'webdav.yandex.ru' /etc/davfs2/secrets"
 end
 
-mount "/mnt/backup/" do
+mount "/mnt/yabackup/" do
   fstype "davfs"
   device "https://webdav.yandex.ru"
   options "rw"
