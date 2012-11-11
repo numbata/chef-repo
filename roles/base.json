@@ -7,6 +7,7 @@
     "recipe[apt]",
     "recipe[users::sysadmins]",
     "recipe[sudo]",
+    "recipe[yabackup]",
     "recipe[nginx::source]",
     "recipe[php]",
     "recipe[php-defaults]",
