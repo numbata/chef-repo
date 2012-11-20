@@ -3,5 +3,5 @@
     url = git@bitbucket.org:numbata/chef-repo-secrets.git
 
 [submodule "cookbooks/database"]
-    path = cookbooks/database
-    url = git://github.com/opscode/cookbooks.git
+	path = cookbooks/database
+	url = git://github.com/opscode/cookbooks.git
