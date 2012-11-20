@@ -1,3 +1,7 @@
 [submodule "data_bags/secrets"]
 	path = data_bags/secrets
-	url = git@bitbucket.org:numbata/chef-repo-secrets.git
+    url = git@bitbucket.org:numbata/chef-repo-secrets.git
+
+[submodule "cookbooks/database"]
+    path = cookbooks/database
+    url = git://github.com/opscode/cookbooks.git
