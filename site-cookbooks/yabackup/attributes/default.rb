@@ -1,0 +1,5 @@
+default["yabackup"]["mountdir"] = "/mnt/yabackup"
+default["yabackup"]["webdav_url"] = "https://webdav.yandex.ru"
+default["yabackup"]["secrets"] = "yabackup"
+default["yabackup"]["owner_user"] = "root"
+default["yabackup"]["owner_group"] = "root"
