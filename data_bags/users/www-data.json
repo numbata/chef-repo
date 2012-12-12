@@ -1,0 +1,5 @@
+{
+  "id": "www-data",
+  "home": "/dev/null",
+  "groups": ["dba", "devops"]
+}
