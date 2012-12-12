@@ -29,3 +29,15 @@
 [submodule "cookbooks/build-essential"]
 	path = cookbooks/build-essential
 	url = git://github.com/opscode-cookbooks/build-essential.git
+[submodule "cookbooks/chef_gem"]
+	path = cookbooks/chef_gem
+	url = git://github.com/hw-cookbooks/chef_gem.git
+[submodule "cookbooks/rsyslog"]
+	path = cookbooks/rsyslog
+	url = git://github.com/opscode-cookbooks/rsyslog.git
+[submodule "cookbooks/chef_handler"]
+	path = cookbooks/chef_handler
+	url = git://github.com/opscode-cookbooks/chef_handler.git
+[submodule "cookbooks/dmg"]
+	path = cookbooks/dmg
+	url = git://github.com/opscode-cookbooks/dmg.git
