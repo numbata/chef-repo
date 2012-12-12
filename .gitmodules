@@ -17,3 +17,6 @@
 [submodule "cookbooks/xfs"]
 	path = cookbooks/xfs
 	url = git://github.com/opscode-cookbooks/xfs.git
+[submodule "cookbooks/nginx"]
+	path = cookbooks/nginx
+	url = git://github.com/opscode-cookbooks/nginx.git
