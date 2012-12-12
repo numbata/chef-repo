@@ -4,4 +4,16 @@
 
 [submodule "cookbooks/database"]
 	path = cookbooks/database
-	url = git://github.com/opscode/cookbooks.git
+	url = git://github.com/opscode-cookbooks/database.git
+[submodule "cookbooks/mysql"]
+	path = cookbooks/mysql
+	url = git://github.com/opscode-cookbooks/mysql.git
+[submodule "cookbooks/postgresql"]
+	path = cookbooks/postgresql
+	url = git://github.com/opscode-cookbooks/postgresql.git
+[submodule "cookbooks/aws"]
+	path = cookbooks/aws
+	url = git://github.com/opscode-cookbooks/aws.git
+[submodule "cookbooks/xfs"]
+	path = cookbooks/xfs
+	url = git://github.com/opscode-cookbooks/xfs.git
