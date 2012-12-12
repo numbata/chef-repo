@@ -23,3 +23,9 @@
 [submodule "cookbooks/apt"]
 	path = cookbooks/apt
 	url = git://github.com/opscode-cookbooks/apt.git
+[submodule "cookbooks/bluepill"]
+	path = cookbooks/bluepill
+	url = git://github.com/opscode-cookbooks/bluepill.git
+[submodule "cookbooks/build-essential"]
+	path = cookbooks/build-essential
+	url = git://github.com/opscode-cookbooks/build-essential.git
