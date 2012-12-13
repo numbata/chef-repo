@@ -3,36 +3,29 @@
 # Recipe:: default
 #
 root_directory = "/var/www/gnomiki.ru"
-public_directory = "#{root_directory}/www"
-log_directory = "#{root_directory}/log"
+public_directory = "#{root_directory}/current/"
+log_directory = "#{root_directory}/shared/log/"
 
-["#{root_directory}" "#{public_directory}" "#{log_directory}"].each do |dir|
-  directory "#{dir}" do
+[root_directory, public_directory, log_directory].each do |dir|
+  directory dir do
     recursive true
-    owner www-data
-    group www-data
+    owner "www-data"
+    group "www-data"
   end
 end
 
-git "#{public_directory}" do
-  repository "git@git.subbota.net:gnomiki_ru.git"
-  reference "master"
-  action :sync
-  user www-data
-  group www-data
-end
-
-template "/etc/nginx/conf.d/gnomiki.ru.conf" do
+template "/etc/nginx/sites-enabled/gnomiki.ru.conf" do
   source "gnomiki.ru.conf.erb"
   variables :server_name => 'www.gnomiki.ru gnomiki.ru',
-            :root_directory => "#{root_directory}",
-            :public_directory => "#{public_directory}",
-            :log_directory => "#{log_directory}"
+            :public_directory => public_directory,
+            :log_directory => log_directory
 
   notifies :restart, resources(:service => 'nginx')
 end
 
+chef_gem "mysql"
 mysql_database "gnomiki" do
+  connection ({:host => "localhost", :username => "root"})
   action :create
 end
 
