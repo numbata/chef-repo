@@ -1,4 +1,5 @@
 {
   "id": "ip",
-  "groups": ["sysadmin", "dba", "devops"]
+  "groups": ["sysadmin", "dba", "devops"],
+  "ssh_keys": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAmpPB+bmEWrEY7TuuTmVjfdCRdqUotk4acbLSJQ9SuwnL4z2a556Ig0moZ8OBOPxDw6eV4TRg6XImz2bPUP/wFO9B6efhYLeyRZHS4y5Xmj1iy3MIqATWO1Kp3zDkpWhRLSVkAphVlYlrHB8hdcNA/DIqQ5C+8GrgT0l/RsHqqpc="
 }

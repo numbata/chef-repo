@@ -5,16 +5,19 @@
   "description" : "Vagrant role",
   "run_list": [
     "role[base]",
-    "recipe[rvm::ruby_193]",
+    "recipe[rvm::system]",
     "recipe[virtualbox]",
     "recipe[vagrant_boxes]"
     ],
-  "default_attributes": {
-    "rvm": {
-      "ruby": {
-        "version": "1.9.3",
-        "default": "true"
-      }
-    }
- }
+  "rvm": {
+    "global_gems": [
+      { "name": "bundler" }
+    ]
+  },
+  "override_attributes": {
+  "vagrant": {
+    "url": "http://files.vagrantup.com/packages/b12c7e8814171c1295ef82416ffe51e8a168a244/vagrant_1.3.1_x86_64.deb"
+  }
+  }
+
 }

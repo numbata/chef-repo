@@ -1,10 +1,11 @@
 vagrant_lucid_image = "vagrant_lucid.box"
 
-gem_package "bundle" do
-  action :install
-end
+include_recipe "vagrant::uninstall_gem"
+include_recipe "vagrant"
+vagrant_plugin "vagrant-omnibus"
+vagrant_plugin "vagrant-vbguest"
 
-gem_package "vagrant" do
+gem_package "bundler" do
   action :install
 end
 
@@ -20,7 +21,7 @@ need_iptables = false
 node['vagrant_boxes']['boxes'].each do |box|
   vagrant_boxes_box box['name'] do
     action [:install, :up]
-    source box.has_key?('source') ? box['source'] : node['vagrant_boxes']['source']
+    source box.has_key?('source') ? box['source'] : 'lucid32'
   end
   need_iptables = true if box.has_key?('public_ip')
 end

@@ -53,7 +53,7 @@ task :bundle_cookbook, :cookbook do |t, args|
   FileUtils.mkdir(temp_dir)
   FileUtils.mkdir(temp_cookbook_dir)
 
-  child_folders = [ "cookbooks/#{args.cookbook}", "site-cookbooks/#{args.cookbook}" ]
+  child_folders = [ "cookbooks/cookbooks/#{args.cookbook}" ]
   child_folders.each do |folder|
     file_path = File.join(TOPDIR, folder, ".")
     FileUtils.cp_r(file_path, temp_cookbook_dir) if File.directory?(file_path)
