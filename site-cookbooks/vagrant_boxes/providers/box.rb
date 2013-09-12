@@ -8,8 +8,11 @@ action :install do
   execute "vagrant_boxes_add_#{new_resource.name}" do
     user "root"
     cwd node['vagrant_boxes']['path']
-    command "vagrant box add #{new_resource.name} #{new_resource.source}"
-    not_if "vagrant box list | grep -qE '^#{new_resource.name}$'"
+    command "vagrant box add #{new_resource.source} #{node['vagrant_boxes']['sources'][new_resource.source]}"
+    #only_if do
+    #  node['vagrant_boxes']['sources'].has_key?(new_resource.source)
+    #end
+    not_if "vagrant box list | grep -E \"^#{new_resource.source}\""
   end
 
   new_resource.updated_by_last_action(true)
@@ -21,7 +24,10 @@ action :up do
     user "root"
     cwd node['vagrant_boxes']['path']
     command "vagrant up #{new_resource.name}"
-    not_if "vagrant status #{new_resource.name} | grep -qE '#{new_resource.name}\\s+running'"
+    only_if do
+      ::File.exists?(::File.join(node['vagrant_boxes']['path'],'Vagrantfile'))
+    end
+    not_if "vagrant status #{new_resource.name} | grep -E '#{new_resource.name}\\s+running'"
   end
 
   new_resource.updated_by_last_action(true)

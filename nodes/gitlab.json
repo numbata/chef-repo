@@ -5,18 +5,16 @@
   "run_list": [
     "role[gitlab]"
   ],
-  "attributes": {
-    "gitlab": {
-      "hostname": "git.subbota.net",
-      "web_host": "git.subbota.net",
-      "email_host": "localhost"
-    },
-    "authorization": {
-      "sudo": {
-        "groups": ["admin","wheel", "sysadmin"],
-        "users" : ["fim","ip"],
-        "passwordless": true
-      }
+  "gitlab": {
+    "hostname": "git.subbota.net",
+    "web_host": "git.subbota.net",
+    "email_host": "localhost"
+  },
+  "authorization": {
+    "sudo": {
+      "groups": ["admin","wheel", "sysadmin"],
+      "users" : ["fim","ip"],
+      "passwordless": true
     }
   }
 }

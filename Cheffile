@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'apt'
+cookbook 'chef-solo-search'
+cookbook 'sudo'
+cookbook 'users'
+cookbook 'php'
+cookbook 'percona-install'
+cookbook 'virtualbox',
+  git: 'https://github.com/jtimberman/virtualbox-cookbook'
+cookbook 'rvm',
+  git: 'https://github.com/fnichol/chef-rvm'
+
+cookbook 'gnomiki_ru',
+  path: 'site-cookbooks/gnomiki_ru'
+
+cookbook 'mynginx',
+  path: 'site-cookbooks/mynginx'
+
+cookbook 'php-defaults',
+  path: 'site-cookbooks/php-defaults'
+
+cookbook 'vagrant_boxes',
+  path: 'site-cookbooks/vagrant_boxes'
+
+cookbook 'yabackup',
+  path: 'site-cookbooks/yabackup'
+
+cookbook 'iptables',
+  path: 'site-cookbooks/iptables'

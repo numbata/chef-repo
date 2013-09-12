@@ -1,39 +1,23 @@
 {
-  "json_class": "Chef::Node",
   "name": "subbota.net",
-  "chef_environment": "_default",
   "run_list": [
     "role[base]",
     "role[vagrant]"
   ],
-  "attributes": {
-    "vagrant_boxes": {
-      "boxes": [
-        {
-          "name": "gitlab",
-          "forward_port": {
-            "80": "4567",
-            "22": "2222"
-          },
-          "public_ip" : "188.120.246.38",
-          "run_list" : [
-            "role['base']",
-            "role['gitlab']"
-          ]
+  "vagrant_boxes": {
+    "boxes": [
+      {
+        "name": "sandbox",
+        "forward_port": {
+          "80": "4568",
+          "22": "2223"
         },
-        {
-          "name": "salebomb",
-          "forward_port": {
-            "80": "4568",
-            "22": "2223"
-          },
-          "public_ip" : "188.120.249.79",
-          "run_list" : [
-            "role['salebomb']"
-          ]
-        }
+        "public_ip" : "188.120.249.79",
+        "run_list" : [
+          "role['sandbox']"
+        ]
+      }
 
-      ]
-    }
+    ]
   }
 }

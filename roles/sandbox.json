@@ -1,14 +1,10 @@
 {
-  "name" : "gitlab",
+  "name" : "sandbox",
   "chef_type": "role",
   "json_class" : "Chef::Role",
-  "description" : "Gitlab role",
+  "description" : "Sandbox role",
   "run_list": [
-    "recipe[apt]",
-    "recipe[users::sysadmins]",
-    "recipe[sudo]",
-    "recipe[rvm::ruby_193]",
-    "recipe[gitlab]"
+    "role[base]"
     ],
   "default_attributes": {
     "nginx": {

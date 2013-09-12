@@ -1,0 +1,6 @@
+{
+  "name": "gnomiki.ru",
+  "run_list":[
+    "recipe[gnomiki_ru]"
+  ]
+}

@@ -1,8 +1,0 @@
-{
-  "json_class": "Chef::Node",
-  "name": "salebomb",
-  "chef_environment": "_default",
-  "run_list": [
-    "role[salebomb]"
-  ]
-}
