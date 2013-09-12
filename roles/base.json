@@ -4,15 +4,16 @@
   "json_class" : "Chef::Role",
   "description" : "Base role",
   "run_list": [
+    "recipe[chef-solo-search]",
     "recipe[apt]",
     "recipe[users::sysadmins]",
     "recipe[sudo]",
     "recipe[yabackup]",
     "recipe[nginx::source]",
-    "recipe[php]",
-    "recipe[php-defaults]",
     "recipe[percona-install::server]",
-    "recipe[percona-install::client]"
+    "recipe[percona-install::client]",
+    "recipe[php]",
+    "recipe[php-defaults]"
     ],
   "default_attributes": {
     "php": {
@@ -33,6 +34,23 @@
     },
     "nginx": {
       "init_style": "init"
+      },
+    "authorization": {
+      "sudo": {
+        "groups": ["admin", "wheel", "sysadmin"],
+        "users" : ["fim", "ip"],
+        "passwordless": true
+        }
+      }
+    },
+  "override_attributes": {
+    "mysql": {
+      "client": {
+        "packages": [
+          "percona-server-client-5.5",
+          "libmysqlclient-dev"
+          ]
+        }
       },
     "authorization": {
       "sudo": {

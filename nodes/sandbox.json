@@ -1,0 +1,6 @@
+{
+  "name": "sandbox",
+  "run_list": [
+    "role[sandbox]"
+  ]
+}

@@ -1,22 +1,25 @@
-Vagrant::Config.run do |config|
-  <% @boxes.each_with_index do |box, idx| -%>
-  config.vm.define :<%= box["name"] %> do |box_config|
-    box_config.vm.box = "<%= box["name"] %>"
-    box_config.vm.host_name = "<%= box['name'] %>"
-    box_config.vm.provision :chef_client do |chef|
-      chef.chef_server_url = "<%= Chef::Config[:chef_server_url] %>"
-      chef.validation_client_name = "<%= Chef::Config[:validation_client_name] %>"
-      chef.validation_key_path = "<%= Chef::Config[:validation_key] %>"
-      chef.client_key_path = "<%= Chef::Config[:client_key] %>"
-    end
+Vagrant.configure("2") do |config|
+<% @boxes.each_with_index do |box, idx| -%>
+  config.vm.define "<%= box['name'] %>" do |box_config|
+    box_config.vm.hostname = "<%= box['name'] %>"
+    box_config.vm.box = "<%= box['source'] || "lucid32" %>"
+
     <% if box.has_key?('forward_port') -%>
       <% box['forward_port'].each_pair do |src, dst| -%>
-      box_config.vm.forward_port <%= src %>, <%= dst %>
+    box_config.vm.network :forwarded_port, :guest => <%= src %>, :host => <%= dst %>
       <% end %>
     <% end %>
     <% if box.has_key?('public_ip') -%>
-        box_config.vm.network :hostonly, "192.168.5.<%= idx + 10 %>"
+    box_config.vm.network :private_network, :ip => "192.168.5.<%= idx + 10 %>"
     <% end %>
+
+    box_config.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ["<%= Array(Chef::Config[:cookbook_path]).join('", "') %>"]
+      chef.data_bags_path = "<%= Chef::Config[:data_bag_path] %>"
+      chef.roles_path = "<%= Chef::Config[:role_path] %>"
+      chef.add_role("<%= box['name'] %>")
+      chef.node_name = "<%= box['name'] %>"
+    end
   end
-  <% end %>
+<% end %>
 end
