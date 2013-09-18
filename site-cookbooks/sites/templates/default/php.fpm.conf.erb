@@ -1,0 +1,4 @@
+[<%= @server_name %>]
+listen="<%= @root_directory %>/shared/php.socket"
+access.log="<%= @log_directory %>/fpm.access.log"
+php_admin_value[error_log]="<%= @log_directory %>/fpm.error.log"

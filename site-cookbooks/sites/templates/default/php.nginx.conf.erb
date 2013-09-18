@@ -1,0 +1,37 @@
+server{
+    server_name <%= @server_domain %>;
+    listen 80;
+
+    client_header_buffer_size 100K;
+    client_max_body_size 20m;
+    access_log <%= @log_directory %>/gnomiki.access.log main;
+    error_log <%= @log_directory %>/gnberror.log error;
+    root <%= @public_directory %>/;
+
+    charset         utf-8;
+    index index.php;
+
+    location / {
+        if (!-e $request_filename) {
+            access_log <%= @log_directory %>/access.rewrite.log main;
+            rewrite  ^.*$  /index.php last;
+            break;
+        }
+    }
+
+    error_page  403  /soon/index.html;
+
+    location ~ \.php$ {
+        root <%= @public_directory %>/;
+        access_log <%= @log_directory %>/php.access.log php_main;
+        error_log <%= @log_directory %>/php.error.log error;
+        fastcgi_pass <%= @root_directory %>/shared/php.socket;
+        fastcgi_hide_header X-Powered-By;
+        fastcgi_index index.php;
+        fastcgi_connect_timeout 3600;
+        fastcgi_read_timeout 3600;
+        fastcgi_send_timeout 3600;
+        fastcgi_param SCRIPT_FILENAME <%= @public_directory %>/index.php;
+        include  fastcgi_params;
+    }
+}

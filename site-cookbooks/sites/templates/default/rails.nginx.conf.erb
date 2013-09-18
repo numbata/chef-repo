@@ -1,0 +1,27 @@
+upstream <%= @server_name %>_upstream {
+  server unix:<%= @root_directory %>/shared/unicorn.sock fail_timeout=0;
+}
+
+server {
+    server_name <%= @server_domain %>;
+    listen 80;
+
+    client_header_buffer_size 100K;
+    client_max_body_size 20m;
+    access_log <%= @log_directory %>/gnomiki.access.log main;
+    error_log <%= @log_directory %>/gnberror.log error;
+    root <%= @public_directory %>/;
+
+    charset         utf-8;
+
+    try_files $uri/index.html $uri.html $uri @myapp;
+
+    location @myapp {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        proxy_pass http://<%= @server_name %>_upstream;
+        proxy_redirect off;
+    }
+}
