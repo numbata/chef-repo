@@ -19,5 +19,45 @@
       }
 
     ]
+  },
+  "sites": {
+    "php": [
+      {
+        "name": "gnomiki.ru",
+        "domain": "gnomiki.ru"
+      },
+      {
+        "name": "devpep.ip-studios.ru",
+        "domain": "devpep.ip-studios.ru"
+      },
+      {
+        "name": "ip-studios.ru",
+        "domain": "ip-studios.ru"
+      },
+      {
+        "name": "napotom.me",
+        "domain": "napotom.me"
+      },
+      {
+        "name": "forum.gnomiki.ru",
+        "domain": "forum.gnomiki.ru"
+      },
+      {
+        "name": "pepyaka.ip-studios.ru",
+        "domain": "pepyaka.ip-studios.ru"
+      },
+      {
+        "name": "swigles.ip-studios.ru",
+        "domain": "swigles.ip-studios.ru"
+      },
+      {
+        "name": "testzone.ip-studios.ru",
+        "domain": "testzone.ip-studios.ru"
+      },
+      {
+        "name": "yuliya.subbota.net",
+        "domain": "yuliya.subbota.net"
+      }
+    ]
   }
 }
