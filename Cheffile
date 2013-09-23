@@ -30,3 +30,6 @@ cookbook 'yabackup',
 
 cookbook 'iptables',
   path: 'site-cookbooks/iptables'
+
+cookbook 'sites',
+  path: 'site-cookbooks/sites'

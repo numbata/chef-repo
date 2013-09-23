@@ -10,10 +10,12 @@
     "recipe[sudo]",
     "recipe[yabackup]",
     "recipe[nginx::source]",
+    "recipe[mynginx]",
     "recipe[percona-install::server]",
     "recipe[percona-install::client]",
     "recipe[php]",
-    "recipe[php-defaults]"
+    "recipe[php-defaults]",
+    "recipe[sites]"
     ],
   "default_attributes": {
     "php": {

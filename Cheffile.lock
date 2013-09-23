@@ -4,7 +4,7 @@ SITE
     apt (2.1.1)
     aws (0.101.4)
     build-essential (1.4.2)
-    chef-solo-search (0.4.0)
+    chef-solo-search (0.5.1)
     chef_gem (0.1.0)
     chef_handler (1.1.4)
     database (1.4.0)
@@ -91,6 +91,11 @@ PATH
       php (>= 0.0.0)
 
 PATH
+  remote: site-cookbooks/sites
+  specs:
+    sites (0.0.1)
+
+PATH
   remote: site-cookbooks/vagrant_boxes
   specs:
     vagrant_boxes (0.0.2)
@@ -113,6 +118,7 @@ DEPENDENCIES
   php (>= 0)
   php-defaults (>= 0)
   rvm (>= 0)
+  sites (>= 0)
   sudo (>= 0)
   users (>= 0)
   vagrant_boxes (>= 0)
