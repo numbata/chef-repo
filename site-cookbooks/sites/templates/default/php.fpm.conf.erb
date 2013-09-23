@@ -1,4 +1,16 @@
 [<%= @server_name %>]
+user = www-data
+group = www-data
+pm = dynamic
+pm.max_children = 3
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 2
+pm.max_requests = 200
+env[TMP] = "<%= @root_directory %>/shared/tmp"
+env[TMPDIR] = "<%= @root_directory %>/shared/tmp"
+env[TEMP] = "<%= @root_directory %>/shared/tmp"
 listen="<%= @root_directory %>/shared/php.socket"
 access.log="<%= @log_directory %>/fpm.access.log"
 php_admin_value[error_log]="<%= @log_directory %>/fpm.error.log"
+php_admin_value[memory_limit]= 32M

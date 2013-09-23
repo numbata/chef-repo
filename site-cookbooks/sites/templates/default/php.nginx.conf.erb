@@ -4,8 +4,8 @@ server{
 
     client_header_buffer_size 100K;
     client_max_body_size 20m;
-    access_log <%= @log_directory %>/gnomiki.access.log main;
-    error_log <%= @log_directory %>/gnberror.log error;
+    access_log <%= @log_directory %>/nginx.access.log main;
+    error_log <%= @log_directory %>/nginx.error.log error;
     root <%= @public_directory %>/;
 
     charset         utf-8;
@@ -25,7 +25,7 @@ server{
         root <%= @public_directory %>/;
         access_log <%= @log_directory %>/php.access.log php_main;
         error_log <%= @log_directory %>/php.error.log error;
-        fastcgi_pass <%= @root_directory %>/shared/php.socket;
+        fastcgi_pass unix:<%= @root_directory %>/shared/php.socket;
         fastcgi_hide_header X-Powered-By;
         fastcgi_index index.php;
         fastcgi_connect_timeout 3600;

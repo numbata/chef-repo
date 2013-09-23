@@ -8,13 +8,15 @@ action :install do
 
   root_directory = new_resource.root_directory || "/var/www/#{new_resource.name}"
   public_directory = new_resource.public_directory || "#{root_directory}/current/public/"
-  log_directory = new_resource.log_directory || "#{root_directory}shared/log"
-  config_directory = "#{root_path}shared/config"
+  log_directory = new_resource.log_directory || "#{root_directory}/shared/log"
+  config_directory = "#{root_directory}/shared/config"
+  temp_directory = "#{root_directory}/shared/tmp"
 
-  [root_directory, log_directory, config_directory].each do |dir|
+  [root_directory, log_directory, config_directory, temp_directory].each do |dir|
     directory dir do
       owner "www-data"
       group "www-data"
+      recursive true
       action :create
     end
   end
@@ -35,7 +37,7 @@ action :install do
               :root_directory => root_directory,
               :public_directory => public_directory,
               :log_directory => log_directory
-    notifies :restart, resources(:service => 'nginx')
+    notifies :restart, resources(:service => 'php-fpm')
   end
 
   nginx_site new_resource.name do
