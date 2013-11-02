@@ -12,7 +12,7 @@ action :install do
   config_directory = "#{root_directory}/shared/config"
   temp_directory = "#{root_directory}/shared/tmp"
 
-  [root_directory, log_directory, config_directory, temp_directory].each do |dir|
+  [root_directory, public_directory, log_directory, config_directory, temp_directory].each do |dir|
     directory dir do
       owner "www-data"
       group "www-data"
