@@ -1,0 +1,12 @@
+<?php
+
+function adminer_object() {
+  class AdminerSoftware extends Adminer {
+    function credentials() {
+      return array('localhost','root','');
+    }
+  }
+  return new AdminerSoftware;
+}
+
+include '../../shared/adminer.php';

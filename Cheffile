@@ -33,3 +33,6 @@ cookbook 'iptables',
 
 cookbook 'sites',
   path: 'site-cookbooks/sites'
+
+cookbook 'adminer',
+  path: 'site-cookbooks/adminer'

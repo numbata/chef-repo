@@ -2,7 +2,8 @@
   "name": "subbota.net",
   "run_list": [
     "role[base]",
-    "role[vagrant]"
+    "role[vagrant]",
+    "recipe[adminer]"
   ],
   "vagrant_boxes": {
     "boxes": [

@@ -68,6 +68,11 @@ GIT
       yum (>= 0.0.0)
 
 PATH
+  remote: site-cookbooks/adminer
+  specs:
+    adminer (0.0.1)
+
+PATH
   remote: site-cookbooks/gnomiki_ru
   specs:
     gnomiki_ru (0.0.1)
@@ -109,6 +114,7 @@ PATH
     yabackup (0.0.1)
 
 DEPENDENCIES
+  adminer (>= 0)
   apt (>= 0)
   chef-solo-search (>= 0)
   gnomiki_ru (>= 0)
